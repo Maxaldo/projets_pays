@@ -1,16 +1,16 @@
+import './SearchBar.css'
+
 function SearchBar({ searchTerm, setSearchTerm }) {
   return (
-    <input
-      type="text"
-      placeholder="Rechercher un pays..."
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-      style={{
-        width: '100%',
-        padding: '10px',
-        marginBottom: '20px',
-      }}
-    />
+    <div className="search-bar-container">
+      <input
+        type="text"
+        className="search-bar-input"
+        placeholder="Rechercher un pays..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+    </div>
   )
 }
 

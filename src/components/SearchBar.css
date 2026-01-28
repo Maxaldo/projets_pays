@@ -1,0 +1,26 @@
+.search-bar-container {
+  margin-bottom: 1.5rem;
+}
+
+.search-bar-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.search-bar-input:focus {
+  border-color: #134E5E;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(19, 78, 94, 0.2);
+  transform: translateY(-2px);
+}
+
+.search-bar-input::placeholder {
+  color: #999;
+}
