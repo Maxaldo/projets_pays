@@ -1,8 +1,8 @@
 .flag-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--card-shadow);
   transition: all 0.3s ease;
   cursor: pointer;
   height: 100%;
@@ -12,7 +12,7 @@
 
 .flag-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px var(--shadow-color-strong);
 }
 
 .flag-image-container {
@@ -20,7 +20,7 @@
   width: 100%;
   padding-top: 66.67%;
   overflow: hidden;
-  background: #f8f9fa;
+  background: var(--bg-input);
 }
 
 .flag-image {
@@ -48,7 +48,7 @@
 .flag-name {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #333;
+  color: var(--card-text);
   margin: 0;
   line-height: 1.3;
 }
@@ -65,16 +65,16 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .flag-detail-label {
   font-weight: 600;
-  color: #134E5E;
+  color: var(--accent-primary);
 }
 
 .flag-detail-value {
-  color: #555;
+  color: var(--card-text-secondary);
 }
 
 @media (max-width: 768px) {

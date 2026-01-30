@@ -7,7 +7,7 @@
 .color-filter-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--card-text);
   margin: 0;
 }
 
@@ -22,34 +22,34 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.6rem 1.2rem;
-  background: #f8f9fa;
+  background: var(--filter-label-bg);
   border: 2px solid transparent;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
-  color: #555;
+  color: var(--filter-label-text);
   user-select: none;
 }
 
 .color-filter-label:hover {
-  background: #e9ecef;
+  background: var(--bg-input-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .color-filter-label.active {
-  background: linear-gradient(135deg, #134E5E 0%, #71B280 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   color: white;
   border-color: transparent;
-  box-shadow: 0 4px 15px rgba(19, 78, 94, 0.3);
+  box-shadow: 0 4px 15px var(--shadow-color-strong);
 }
 
 .color-filter-checkbox {
   width: 18px;
   height: 18px;
   cursor: pointer;
-  accent-color: #134E5E;
+  accent-color: var(--accent-primary);
 }
 
 .color-filter-text {
