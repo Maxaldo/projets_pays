@@ -1,16 +1,53 @@
-# React + Vite
+# FLAG REPOSITORY
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Application de Drapeaux du Monde
 
-Currently, two official plugins are available:
+## DESCRIPTION
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+FlagRepository est une application web moderne et interactive qui permet d'explorer les drapeaux de tous les pays du monde. L'application offre une interface utilisateur élégante avec des fonctionnalités de recherche, de filtrage et de tri avancées.
 
-## React Compiler
+Les données sont récupérées depuis l'API REST Countries et affichées de manière claire et organisée.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## TECHNOLOGIES UTILISÉES
 
-## Expanding the ESLint configuration
+- React 19.2.0 - Bibliothèque JavaScript pour l'interface utilisateur
+- React Router DOM - Gestion de la navigation et des routes
+- Vite - Outil de build et serveur de développement
+- REST Countries API - API pour récupérer les données des pays
+- CSS3 - Styles modernes avec animations et responsive design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## FONCTIONNALITÉS
+
+Affichage des drapeaux
+- Liste complète de tous les pays du monde
+- Cartes de pays avec drapeau, nom, capitale, région et population
+- Design responsive et moderne
+
+### Recherche
+- Barre de recherche en temps réel
+- Recherche par nom de pays
+- Filtrage instantané des résultats
+
+### Filtrage par couleur
+- Filtrage des drapeaux par couleur dominante
+- 7 couleurs disponibles : Rouge, Bleu, Vert, Jaune, Blanc, Noir, Orange
+- Sélection multiple possible
+
+### Tri
+- Tri par nom (A-Z)
+- Tri par population (croissante ou décroissante)
+- Tri par continent/région
+
+### Pagination
+- Affichage de 20 pays par page
+- Navigation avec boutons Précédent/Suivant
+- Indicateur de page actuelle
+
+### Page détail
+- Page dédiée pour chaque pays
+- Informations complètes : drapeau, nom officiel, capitale, population, région, sous-région, langues parlées, monnaies
+- Navigation facile avec bouton retour
+
+### Statistiques
+- Affichage du nombre total de pays
+- Affichage du nombre de pays filtrés/affichés
