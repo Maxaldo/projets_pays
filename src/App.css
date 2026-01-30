@@ -40,6 +40,20 @@
   animation: fadeInUp 0.6s ease-out;
 }
 
+.filters-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .filters-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 .stats-bar {
   display: flex;
   justify-content: center;
