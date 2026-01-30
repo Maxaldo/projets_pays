@@ -7,6 +7,7 @@ import ColorFilter from './components/ColorFilter'
 import SortFilter from './components/SortFilter'
 import CountryDetail from './components/CountryDetail'
 import Pagination from './components/Pagination'
+import ThemeToggle from './components/ThemeToggle'
 
 function App() {
   const [countries, setCountries] = useState([])
@@ -94,6 +95,9 @@ function App() {
       <div className="app-container">
         <div className="app-wrapper">
           <header className="app-header">
+            <div className="header-top">
+              <ThemeToggle />
+            </div>
             <h1 className="app-title">FlagRepository</h1>
             <p className="app-subtitle">
               Explorez les drapeaux du monde entier
