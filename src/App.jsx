@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import FlagList from './components/FlagList'
 import SearchBar from './components/SearchBar'
 import ColorFilter from './components/ColorFilter'
+import SortFilter from './components/SortFilter'
 import CountryDetail from './components/CountryDetail'
 import Pagination from './components/Pagination'
 
@@ -13,6 +14,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedColors, setSelectedColors] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
+  const [sortBy, setSortBy] = useState('name')
 
   const colors = ['red', 'blue', 'green', 'yellow', 'white', 'black', 'orange']
   const ITEMS_PER_PAGE = 20
@@ -48,7 +50,23 @@ function App() {
       const alt = (country.flags?.alt ?? '').toLowerCase()
       return selectedColors.some((color) => alt.includes(color))
     })
-    .sort((a, b) => a.name.common.localeCompare(b.name.common))
+    .sort((a, b) => {
+      switch (sortBy) {
+        case 'name':
+          return a.name.common.localeCompare(b.name.common)
+        case 'population-asc':
+          return (a.population || 0) - (b.population || 0)
+        case 'population-desc':
+          return (b.population || 0) - (a.population || 0)
+        case 'region':
+          if (a.region !== b.region) {
+            return (a.region || '').localeCompare(b.region || '')
+          }
+          return a.name.common.localeCompare(b.name.common)
+        default:
+          return a.name.common.localeCompare(b.name.common)
+      }
+    })
 
   const totalPages = Math.ceil(filteredCountries.length / ITEMS_PER_PAGE)
   const paginatedCountries = filteredCountries.slice(
@@ -58,7 +76,7 @@ function App() {
 
   useEffect(() => {
     setCurrentPage(1)
-  }, [searchTerm, selectedColors])
+  }, [searchTerm, selectedColors, sortBy])
 
   if (loading) {
     return (
@@ -105,11 +123,14 @@ function App() {
                       searchTerm={searchTerm}
                       setSearchTerm={setSearchTerm}
                     />
-                    <ColorFilter
-                      selectedColors={selectedColors}
-                      setSelectedColors={setSelectedColors}
-                      colors={colors}
-                    />
+                    <div className="filters-row">
+                      <ColorFilter
+                        selectedColors={selectedColors}
+                        setSelectedColors={setSelectedColors}
+                        colors={colors}
+                      />
+                      <SortFilter sortBy={sortBy} setSortBy={setSortBy} />
+                    </div>
                   </section>
 
                   {filteredCountries.length === 0 ? (
