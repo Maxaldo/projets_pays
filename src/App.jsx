@@ -24,7 +24,7 @@ function App() {
     async function loadCountries() {
       try {
         const res = await fetch(
-          'https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion,languages,currencies'
+          'https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion,languages,currencies,borders,cca3'
         )
         const data = await res.json()
         setCountries(data)

@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import './CountryDetail.css'
 
 function CountryDetail({ countries }) {
@@ -51,6 +51,17 @@ function CountryDetail({ countries }) {
         )
         .join(', ')
     : 'Non spécifiées'
+
+  const neighbors = useMemo(() => {
+    if (!country.borders || country.borders.length === 0) {
+      return []
+    }
+    return country.borders
+      .map((borderCode) =>
+        countries.find((c) => c.cca3 === borderCode)
+      )
+      .filter(Boolean)
+  }, [country.borders, countries])
 
   return (
     <div className="detail-page-container">
@@ -118,6 +129,36 @@ function CountryDetail({ countries }) {
               <div className="detail-item detail-item-full">
                 <span className="detail-label">Monnaies</span>
                 <span className="detail-value">{currencies}</span>
+              </div>
+
+              <div className="detail-item detail-item-full">
+                <span className="detail-label">Pays voisins</span>
+                {neighbors.length === 0 ? (
+                  <span className="detail-value">
+                    Aucun pays frontalier (île)
+                  </span>
+                ) : (
+                  <div className="neighbors-container">
+                    {neighbors.map((neighbor) => (
+                      <Link
+                        key={neighbor.cca3}
+                        to={`/country/${encodeURIComponent(
+                          neighbor.name.common
+                        )}`}
+                        className="neighbor-item"
+                      >
+                        <img
+                          src={neighbor.flags?.png}
+                          alt={`Drapeau de ${neighbor.name.common}`}
+                          className="neighbor-flag"
+                        />
+                        <span className="neighbor-name">
+                          {neighbor.name.common}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
