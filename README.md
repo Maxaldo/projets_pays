@@ -51,3 +51,9 @@ Affichage des drapeaux
 ### Statistiques
 - Affichage du nombre total de pays
 - Affichage du nombre de pays filtrés/affichés
+
+##NOMS
+- TSIELA Cheridanh
+- SOGBOSSI Max Ronaldo
+- BOUKEROUI Adam
+- GHINIA Aymen
