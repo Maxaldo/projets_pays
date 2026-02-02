@@ -52,7 +52,7 @@ Affichage des drapeaux
 - Affichage du nombre total de pays
 - Affichage du nombre de pays filtrés/affichés
 
-##NOMS
+## NOMS
 - TSIELA Cheridanh
 - SOGBOSSI Max Ronaldo
 - BOUKEROUI Adam
