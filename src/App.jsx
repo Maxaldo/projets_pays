@@ -8,10 +8,10 @@ import SortFilter from './components/SortFilter'
 import CountryDetail from './components/CountryDetail'
 import Pagination from './components/Pagination'
 import ThemeToggle from './components/ThemeToggle'
+import { useCountries } from './hooks/useCountries'
 
 function App() {
-  const [countries, setCountries] = useState([])
-  const [loading, setLoading] = useState(true)
+  const { countries, loading, error } = useCountries()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedColors, setSelectedColors] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -19,24 +19,6 @@ function App() {
 
   const colors = ['red', 'blue', 'green', 'yellow', 'white', 'black', 'orange']
   const ITEMS_PER_PAGE = 20
-
-  useEffect(() => {
-    async function loadCountries() {
-      try {
-        const res = await fetch(
-          'https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion,languages,currencies,borders,cca3'
-        )
-        const data = await res.json()
-        setCountries(data)
-      } catch (error) {
-        console.error('Erreur lors du chargement des pays:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    loadCountries()
-  }, [])
 
   const filteredCountries = countries
     .filter((country) => {
@@ -85,6 +67,19 @@ function App() {
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p className="loading-text">Chargement des drapeaux...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="app-container">
+        <div className="loading-container">
+          <div className="no-results-icon">⚠️</div>
+          <p className="loading-text">
+            Erreur lors du chargement des pays: {error.message}
+          </p>
         </div>
       </div>
     )
