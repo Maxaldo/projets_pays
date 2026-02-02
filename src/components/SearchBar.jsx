@@ -1,8 +1,18 @@
 import './SearchBar.css'
+import { Search } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 function SearchBar({ searchTerm, setSearchTerm }) {
   return (
-    <div className="search-bar-container">
+    <motion.div
+      className="search-bar-container"
+      initial={{ width: "80%" }}
+      whileFocus={{ width: "100%" }}
+      viewport={{ once: true }}
+    >
+      <div className="search-icon-wrapper">
+        <Search className="search-icon" size={20} />
+      </div>
       <input
         type="text"
         className="search-bar-input"
@@ -10,7 +20,7 @@ function SearchBar({ searchTerm, setSearchTerm }) {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-    </div>
+    </motion.div>
   )
 }
 

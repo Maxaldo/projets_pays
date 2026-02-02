@@ -1,5 +1,6 @@
 import './FlagCard.css'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 function FlagCard({ country }) {
   const formatPopulation = (pop) => {
@@ -16,13 +17,27 @@ function FlagCard({ country }) {
       to={`/country/${encodeURIComponent(country.name.common)}`}
       style={{ textDecoration: 'none', color: 'inherit' }}
     >
-      <article className="flag-card">
+      <motion.article
+        className="flag-card"
+        whileHover={{
+          y: -10,
+          scale: 1.02,
+          rotateX: 5,
+          rotateY: 5,
+          boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
+        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      >
         <div className="flag-image-container">
-          <img
+          <motion.img
             src={country.flags.png}
             alt={country.flags.alt || `Drapeau de ${country.name.common}`}
             className="flag-image"
             loading="lazy"
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.4 }}
           />
         </div>
         <div className="flag-info">
@@ -50,7 +65,7 @@ function FlagCard({ country }) {
             )}
           </div>
         </div>
-      </article>
+      </motion.article>
     </Link>
   )
 }

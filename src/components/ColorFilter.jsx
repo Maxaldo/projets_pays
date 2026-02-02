@@ -1,4 +1,5 @@
 import './ColorFilter.css'
+import { motion } from 'framer-motion'
 
 function ColorFilter({ selectedColors, setSelectedColors, colors }) {
   function toggleColor(color) {
@@ -15,11 +16,13 @@ function ColorFilter({ selectedColors, setSelectedColors, colors }) {
       <h3 className="color-filter-title">Filtrer par couleur:</h3>
       <div className="color-filter-options">
         {colors.map((color) => (
-          <label
+          <motion.label
             key={color}
-            className={`color-filter-label ${
-              selectedColors.includes(color) ? 'active' : ''
-            }`}
+            className={`color-filter-label ${selectedColors.includes(color) ? 'active' : ''
+              }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            layout
           >
             <input
               type="checkbox"
@@ -28,7 +31,7 @@ function ColorFilter({ selectedColors, setSelectedColors, colors }) {
               onChange={() => toggleColor(color)}
             />
             <span className="color-filter-text">{color}</span>
-          </label>
+          </motion.label>
         ))}
       </div>
     </div>
