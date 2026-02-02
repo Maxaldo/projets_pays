@@ -109,6 +109,14 @@
   color: var(--text-muted);
 }
 
+/* Neighbors Layout */
+.neighbors-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
 .neighbor-item {
   display: flex;
   flex-direction: column;
@@ -116,10 +124,12 @@
   gap: 0.5rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border-radius: 12px;
   background: var(--bg-input);
-  min-width: 80px;
+  min-width: 60px;
+  /* Reduced min-width */
+  max-width: 100px;
   border: 1px solid transparent;
 }
 
@@ -127,19 +137,30 @@
   background: var(--primary);
   border-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 15px var(--shadow-color);
+  transform: translateY(-2px);
 }
 
 .neighbor-name {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   text-align: center;
   word-break: break-word;
+  /* Prevents overflow */
   color: var(--text-main) !important;
-  /* Force readable text color */
+  line-height: 1.2;
 }
 
 .neighbor-item:hover .neighbor-name {
   color: white !important;
+}
+
+/* Ensure images are small */
+.neighbor-flag {
+  width: 40px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 @media (max-width: 600px) {
