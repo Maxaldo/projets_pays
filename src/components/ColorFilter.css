@@ -30,6 +30,9 @@
   font-weight: 500;
   color: var(--filter-label-text);
   user-select: none;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
 }
 
 .color-filter-label:hover {
@@ -39,10 +42,22 @@
 }
 
 .color-filter-label.active {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  background: transparent;
   color: white;
   border-color: transparent;
   box-shadow: 0 4px 15px var(--shadow-color-strong);
+}
+
+.color-filter-label.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  border-radius: inherit;
+  z-index: -1;
 }
 
 .color-filter-checkbox {
@@ -50,11 +65,15 @@
   height: 18px;
   cursor: pointer;
   accent-color: var(--accent-primary);
+  position: relative;
+  z-index: 1;
 }
 
 .color-filter-text {
   font-size: 0.95rem;
   text-transform: capitalize;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
